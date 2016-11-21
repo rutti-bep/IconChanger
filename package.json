@@ -1,0 +1,26 @@
+{
+  "name": "IconChanger",
+  "version": "1.0.0",
+  "description": "- いろんなサービスごとにIcon変えるのめんどい...  - 一括でchangeできるようにしようずー！",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rutti-bep/IconChanger.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rutti-bep/IconChanger/issues"
+  },
+  "homepage": "https://github.com/rutti-bep/IconChanger#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "passport": "^0.3.2",
+    "passport-twitter": "^1.0.4"
+  }
+}

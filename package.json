@@ -18,9 +18,14 @@
   },
   "homepage": "https://github.com/rutti-bep/IconChanger#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.2",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
+    "oauth": "^0.9.14",
     "passport": "^0.3.2",
-    "passport-twitter": "^1.0.4"
+    "passport-twitter": "^1.0.4",
+    "twitter": "^1.4.0"
   }
 }

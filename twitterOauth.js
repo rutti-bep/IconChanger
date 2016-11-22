@@ -17,11 +17,12 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new TwitterStrategy({
 consumerKey: TWITTER_CONSUMER_KEY,
 consumerSecret: TWITTER_CONSUMER_SECRET,
-callbackURL: "http://localhost:3000/auth/twitter/callback"
+callbackURL: "http://localhost:3000/auth/twitter/callback",
+passReqToCallback: true
 },
-function(token, tokenSecret, profile, done) {
+function(req,token, tokenSecret, profile, done) {
 passport.session.id = profile.id;
-
+console.log(req.query);
 // tokenとtoken_secretをセット
 profile.twitter_token = token;
 profile.twitter_token_secret = tokenSecret;

@@ -1,9 +1,9 @@
 "use strict";
 var fs = require('fs');
 var twitter = require('twitter');
-var keys = require("./CONSUMER_KEY.json");
-var TWITTER_CONSUMER_KEY = keys[1];
-var TWITTER_CONSUMER_SECRET = keys[2];
+var TWITTER_CONSUMER_KEY = process.env.TWITTER_CONSUMER_KEY;
+var TWITTER_CONSUMER_SECRET = process.env.TWITTER_CONSUMER_SECRET;
+
 
 var OAuth = require('oauth').OAuth;
 var oauth = new OAuth(

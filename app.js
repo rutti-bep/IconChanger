@@ -13,8 +13,7 @@ var session = require('express-session');
 var twitter = require('./twitter');
 
 //keys
-var keys = require("./CONSUMER_KEY.json");
-var SESSION_SECRET = keys[0];
+var SESSION_SECRET = process.env.SESSION_SECRET;
 
 var app = express();
 var server = http.createServer(app);

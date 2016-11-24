@@ -4,7 +4,7 @@
   "description": "- いろんなサービスごとにIcon変えるのめんどい...  - 一括でchangeできるようにしようずー！",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node app.js"
   },
   "repository": {
@@ -29,5 +29,9 @@
     "passport": "^0.3.2",
     "passport-twitter": "^1.0.4",
     "twitter": "^1.4.0"
-  }
+  },
+	"engines": {
+		"node": "v4.4.4",
+		"npm":  "2.15.1"
+	}
 }

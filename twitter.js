@@ -5,7 +5,7 @@ var TWITTER_CONSUMER_KEY = process.env.TWITTER_CONSUMER_KEY;
 var TWITTER_CONSUMER_SECRET = process.env.TWITTER_CONSUMER_SECRET;
 var IPSetting = process.env.IPSetting;
 var portSetting = ":"+(process.env.PORT || 3000).toString();
-console.log(IPSetting+portSetting+'/auth/twitter/callback');
+console.log(IPSetting+portSetting+'/');
 
 var OAuth = require('oauth').OAuth;
 var oauth = new OAuth(
@@ -14,7 +14,7 @@ var oauth = new OAuth(
 				TWITTER_CONSUMER_KEY,
 				TWITTER_CONSUMER_SECRET,
 				'1.0A',
-				"http://"+IPSetting+portSetting+'/auth/twitter/callback',
+				IPSetting+portSetting+'/auth/twitter/callback',
 				'HMAC-SHA1'
 );
 
@@ -45,7 +45,7 @@ function twitterOauthSetUp(app){
 						req.session.twitterOAuth.accessToken = oauthAccessToken;
 						req.session.twitterOAuth.accessTokenSecret = oauthAccessTokenSecret;
 						//res.send("TOPページに移動します");
-						res.redirect("http://"+IPSetting+portSetting+"/");
+						res.redirect(IPSetting + portSetting + "/");
 					}
 			})
 		}else{

@@ -12,7 +12,8 @@ var session = require('express-session');
 
 var twitter = require('./twitter');
 
-//keys
+
+//key
 var SESSION_SECRET = process.env.SESSION_SECRET;
 
 var app = express();
@@ -55,6 +56,6 @@ app.post('/IconImage',upload.single('image'),function(req,res,next){
 twitter.twitterOauthSetUp(app);
 
 // リッスン
-server.listen(3000);
+server.listen((process.env.PORT || 3000));
 console.log('Listening on port %d in %s mode', server.address().port, app.settings.env);
 

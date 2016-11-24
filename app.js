@@ -56,6 +56,6 @@ app.post('/IconImage',upload.single('image'),function(req,res,next){
 twitter.twitterOauthSetUp(app);
 
 // リッスン
-server.listen((process.env.PORT || 3000));
+server.listen(process.env.PORT || 3000);
 console.log('Listening on port %d in %s mode', server.address().port, app.settings.env);
 

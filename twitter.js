@@ -4,7 +4,10 @@ var twitter = require('twitter');
 var TWITTER_CONSUMER_KEY = process.env.TWITTER_CONSUMER_KEY;
 var TWITTER_CONSUMER_SECRET = process.env.TWITTER_CONSUMER_SECRET;
 var IPSetting = process.env.IPSetting;
-var portSetting = ":"+(process.env.PORT || 3000).toString();
+var portSetting = "";
+if(!/(heroku)/.exec(IPSetting)){
+	portSetting = ":"+(process.env.PORT || 3000).toString();
+}
 console.log(IPSetting+portSetting+'/');
 
 var OAuth = require('oauth').OAuth;

@@ -70,7 +70,7 @@ function twitterIconChangeRequest(req){
 		fs.unlinkSync('./'+req.file.path);
 	}catch(error){ 
 		console.log(error);
-		return error
+		return "error!!";
 	}
 
 
@@ -79,12 +79,12 @@ function twitterIconChangeRequest(req){
 	client.post('account/update_profile_image',{image: image},function(error,responce){
 		if(error){
 			console.log(error);	
-			return error;
+			return "error!!";
 		}else{
-			console.log(responce);
-			return responce;
+			return "success!!";
 		}
 	})
+	
 }
 
 function b64Encode(str){

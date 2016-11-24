@@ -42,15 +42,14 @@ app.get('/',function(req,res){
 	res.render('index.ejs',ejsStatus);
 })
 
-app.post('/IconImage',upload.single('image'),function(req,res,next){
-	console.log(req.body);
-	var resDatas = {};
+app.post('/IconImage',upload.single('image'),function(req,res){
+	var ejsStatus = {};
 	if(req.body['twitter']){
-		 resDatas['twitter'] = twitter.twitterIconChangeRequest(req);
-	}
-	res.send(resDatas);
-	
-	//twitter.twitterIconChangeRequest();	
+		 ejsStatus['twitter'] = "<p>twitter : "+ twitter.twitterIconChangeRequest(req)+"</p>";
+	}else{
+		ejsStatus['twitter'] = "";
+		}
+		res.render('uploaded.ejs',ejsStatus);	
 })
 
 twitter.twitterOauthSetUp(app);

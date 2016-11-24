@@ -62,10 +62,12 @@ function twitterIconChangeRequest(req){
 	})
 	try{
 		image = fs.readFileSync('./'+req.file.path);
+		fs.unlinkSync('./'+req.file.path);
 	}catch(error){ 
 		console.log(error);
 		return error
 	}
+
 
 	image = b64Encode(image);
 

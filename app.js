@@ -35,7 +35,7 @@ app.use(session({
 app.get('/',function(req,res){
 	var ejsStatus = {};
 	if(req.session.twitterOAuth){
-		ejsStatus['twitterButton'] = " <b>認証済みです</b> ";
+		ejsStatus['twitterButton'] = ' <b>認証済みです</b> -> <a href="/auth/twitter">別のアカウントでtwitter認証する</a>';
 	}else{
 		ejsStatus['twitterButton'] = ' -> <a href="/auth/twitter">twitter認証する</a>' ;
 	}

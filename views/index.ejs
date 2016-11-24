@@ -5,9 +5,9 @@
 	</head>
 	<body>
 		<h1>IconChanger</h1>
-		<form method="post" action="http://127.0.0.1:3000/IconImage" enctype=”multipart/form-data”>
-			<input type="file" name="image">
-			<p><input type="checkbox" name="twitter" value="true">twitter<%- twitterButton%></p>
+		<form method="post" enctype="multipart/form-data" action="/IconImage" >
+			<input type="file" value="image" name="image">
+			<p><input type="checkbox" value="twitter" name="twitter">twitter<%- twitterButton%></p>
 			<input type="submit" value="upload">
 		</form>
 	</body>

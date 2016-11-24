@@ -3,7 +3,11 @@ var http = require('http');
 var express = require('express');
 var ejs = require('ejs');
 var cookieParser = require('cookie-parser');
+
 var bodyParser = require('body-parser'); 
+var multer = require('multer');
+var upload = multer({ dest: 'uploads/' })
+
 var session = require('express-session');
 
 var twitter = require('./twitter');
@@ -31,17 +35,21 @@ app.use(session({
 app.get('/',function(req,res){
 	var ejsStatus = {};
 	if(req.session.twitterOAuth){
-		ejsStatus['twitterButton'] = "";
+		ejsStatus['twitterButton'] = " <b>認証済みです</b> ";
 	}else{
 		ejsStatus['twitterButton'] = ' -> <a href="/auth/twitter">twitter認証する</a>' ;
 	}
 	res.render('index.ejs',ejsStatus);
-	console.log("!!!");
 })
 
-app.post('/IconImage',function(req,res){
-	console.log(req.body)
-	res.send(req.body.twitter);
+app.post('/IconImage',upload.single('image'),function(req,res,next){
+	console.log(req.body);
+	var resDatas = {};
+	if(req.body['twitter']){
+		 resDatas['twitter'] = twitter.twitterIconChangeRequest(req);
+	}
+	res.send(resDatas);
+	
 	//twitter.twitterIconChangeRequest();	
 })
 

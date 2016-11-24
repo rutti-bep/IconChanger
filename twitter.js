@@ -1,4 +1,5 @@
 "use strict";
+var fs = require('fs');
 var twitter = require('twitter');
 var keys = require("./CONSUMER_KEY.json");
 var TWITTER_CONSUMER_KEY = keys[1];
@@ -17,7 +18,6 @@ var oauth = new OAuth(
 
 function twitterOauthSetUp(app){
 	app.get('/auth/twitter',function(req,res){
-				console.log(req);
 		oauth.getOAuthRequestToken(function(error,oauthToken,oauthTokenSecret,results){
 			if(error){
 				console.log(error);
@@ -52,23 +52,35 @@ function twitterOauthSetUp(app){
 	})
 }
 
-function twitterIconChangeRequest(req,image){
-	var client = new Twitter({
+function twitterIconChangeRequest(req){
+	var image;
+	var client = new twitter({
 		consumer_key: TWITTER_CONSUMER_KEY,
 		consumer_secret: TWITTER_CONSUMER_SECRET,
 		access_token_key: req.session.twitterOAuth.accessToken,
 		access_token_secret: req.session.twitterOAuth.accessTokenSecret
 	})
+	try{
+		image = fs.readFileSync('./'+req.file.path);
+	}catch(error){ 
+		console.log(error);
+		return error
+	}
 
-	client.get('account/update_profile_image',image,function(error,responce){
-		if(!error){
+	image = b64Encode(image);
+
+	client.post('account/update_profile_image',{image: image},function(error,responce){
+		if(error){
 			console.log(error);	
+			return error;
+		}else{
+			console.log(responce);
+			return responce;
 		}
-		console.log(responce);
 	})
 }
 
-function b64encode(str){
+function b64Encode(str){
 	return new Buffer(str).toString('base64');
 }
 

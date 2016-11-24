@@ -23,6 +23,7 @@
     "ejs": "^2.5.2",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
+    "multer": "^1.2.0",
     "oauth": "^0.9.14",
     "passport": "^0.3.2",
     "passport-twitter": "^1.0.4",
